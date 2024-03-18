@@ -24,19 +24,29 @@ The following is a sample of the point cloud representation of the image:
 
 ### Classification Result
 
-Model  | Training Loss | Validation Loss
-------------- | ------------- | ----------
-GCN  | 0.6790 | 0.7080
-GAT | 0.6723 | 0.6970
-GraphSAGE | 0.6857 | 0.7200
+Model  | Test Accuracy 
+------------- | ------------- 
+GCN  | 68.8%
+GAT | 67%
+GraphSAGE | 69.9% 
+### Normalized Result
+Also, I tried normalizing the Jets and training them on the Graph SAGE-based architecture.
+
+Data  | Test Accuracy 
+------------- | ------------- 
+Non-normalized  | 69.9%
+Normalized | 68.2%
+
 
 ## Discussion
 The **final architecture** chosen here is the **Graph Sage** architecture.
 
 - Firstly, among all three architectures we experimented on Graph Sage performed just slightly better.
 
-- From a computational point of view Graph Sage is much more efficient than the other two architectures.
+- From a computational point of view Graph Sage is much more efficient than the other two architecture. It trained faster than the other two.
 
-- Although the performance between the models is more or less the same here it can change when we use large batches or a bigger subset of data. In such cases, Graph Attention Networks are better as they will capture the deeper relation between the nodes, due to the attention mechanism, much better as compared to Graph Sage but at a trade-off of performance.
+- Although the performance between the models is more or less same here, it can change when we use large batches or use a bigger subset of data or tuning the - hyperparameter.
 
-- Another factor to consider here is how we are representing the Images as graph. We can choose different node features such as the Values of the channels or momentum etc or use Euclidian metric instead of adjacency to be in the edge embedding to enrich the graph more. This may help in capturing a better representation of the graph overall.
+- I tried using global_mean_pool to aggregate the node features and provide a global graph vector but there are more efficient methods to do that such as using mincut pooling and more.
+
+- Also normalizing the jets didn't improve anything. This may be due to the fact that the Jets are raw sensor data in physical space and as such standard preprocessing may not be same here as it is for a RGB image.
