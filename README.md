@@ -43,10 +43,10 @@ The **final architecture** chosen here is the **Graph Sage** architecture.
 
 - Firstly, among all three architectures we experimented on Graph Sage performed just slightly better.
 
-- From a computational point of view Graph Sage is much more efficient than the other two architecture. It trained faster than the other two.
+- From a computational point of view Graph Sage is much more efficient than the other two architectures as it samples and aggregates the features of neighbors of a node. 
 
-- Although the performance between the models is more or less same here, it can change when we use large batches or use a bigger subset of data or tuning the - hyperparameter.
+- Although the performance between the models is more or less the same here, it can change when we use large batches or use a bigger subset of data, or tune the - hyperparameter.
 
 - I tried using global_mean_pool to aggregate the node features and provide a global graph vector but there are more efficient methods to do that such as using mincut pooling and more.
 
-- Also normalizing the jets didn't improve anything. This may be due to the fact that the Jets are raw sensor data in physical space and as such standard preprocessing may not be same here as it is for a RGB image.
+- Also normalizing the jets didn't improve anything. This may be because the Jets are raw sensor data in physical space and as such standard preprocessing may not be the same here as it is for an RGB image.
